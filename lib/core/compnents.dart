@@ -112,6 +112,7 @@ customTextField({
   required FocusNode focusNode,
   required IconData icon,
   bool obscureText = false,
+  bool enable=true,
   double? height,
   double? verticalPadding,
   TextInputType type = TextInputType.text,
@@ -123,53 +124,57 @@ customTextField({
     onTap: () {
       FocusScope.of(context).requestFocus(focusNode);
     },
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label,style: openSans(14.sp, defaultColor, FontWeight.w600),textScaleFactor: 1,),
-        SizedBox(height: 8.h,),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
-          height: height,
-          width: double.infinity,
-          decoration: BoxDecoration(
-         //   color: defaultColor,
-            border: Border.all(width: 1.r, color: defaultColor),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(icon,color: oldSilver,size: 14.sp,),
-              SizedBox(width: 8.w,),
-              Expanded(
-                child: TextFormField(
-                  style: openSans(14, Colors.black, FontWeight.w600),
-                  decoration: InputDecoration(
-                      isDense: true,
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.zero,
-                      disabledBorder: InputBorder.none,
-                      hintText: hint,
-                      hintStyle: openSans(14, oldSilver, FontWeight.w300)),
-                  controller: controller,
-                  keyboardType: type,
-                  obscureText: obscureText,
-                  onFieldSubmitted: (value) {
-                    onSubmit();
-                  },
-                  focusNode: focusNode,
-                  validator: validator,
-                  onChanged: onChanged,
+    child: Container(
+      color: Colors.transparent,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label,style: openSans(14.sp, defaultColor, FontWeight.w600),textScaleFactor: 1,),
+          SizedBox(height: 8.h,),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+            height: height,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(width: 1.r, color: defaultColor),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(icon,color: oldSilver,size: 20.r,),
+                SizedBox(width: 8.w,),
+                Expanded(
+                  child: TextFormField(
+                    style: openSans(14, Colors.black, FontWeight.w600),
+                    decoration: InputDecoration(
+                        isDense: true,
+                        enabled: enable,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                        disabledBorder: InputBorder.none,
+                        hintText: hint,
+                        hintStyle: openSans(14, oldSilver, FontWeight.w300)),
+                    controller: controller,
+                    keyboardType: type,
+                    obscureText: obscureText,
+                    onFieldSubmitted: (value) {
+                      onSubmit();
+                    },
+                    focusNode: focusNode,
+                    validator: validator,
+                    onChanged: onChanged,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }

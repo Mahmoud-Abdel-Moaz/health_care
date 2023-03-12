@@ -8,8 +8,31 @@ class AuthCubit extends Cubit<AuthState> {
 
   static AuthCubit get(context) => BlocProvider.of(context);
 
+  changeSelectedDate(DateTime dateTime) {
+    emit(ChangeSelectedDateState(dateTime));
+  }
+  changeSelectedGender(String gender) {
+    emit(ChangeSelectedGenderState(gender));
+  }
+
   changePasswordVisibility(bool visible){
     emit(ChangePasswordVisibilityState(visible));
+  }
+
+
+  changeVaccineDate(DateTime vaccineDate) {
+    emit(ChangeVaccineDateState(vaccineDate));
+  }
+  changeSelectedBloodType(String bloodType) {
+    emit(ChangeSelectedBloodTypeState(bloodType));
+  }
+
+  changeRegisterPasswordVisibility(bool visible){
+    emit(ChangeRegisterPasswordVisibilityState(visible));
+  }
+
+  changeRegisterPasswordVerifyVisibility(bool visible){
+    emit(ChangeRegisterPasswordVerifyVisibilityState(visible));
   }
 
 }

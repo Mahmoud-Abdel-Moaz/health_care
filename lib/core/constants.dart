@@ -12,6 +12,7 @@ const projectId='raya-68237';
 const internetError='تأكد من الأتصال بالأنترنت';
 bool enableNotification=true;
 bool enableRate=true;
+String? userId;
 
 setDefaultStatusBar() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

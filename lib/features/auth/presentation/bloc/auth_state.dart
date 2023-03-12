@@ -64,3 +64,60 @@ class ChangeSelectedBloodTypeState extends AuthState {
   @override
   List<Object> get props => [bloodType];
 }
+
+class LoadingCreateAccountState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class LoadedCreateAccountState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class ErrorCreateAccountState extends AuthState {
+  final String message;
+
+  const ErrorCreateAccountState(this.message);
+  @override
+  List<Object> get props => [message];
+}
+class LoadingLoginState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class LoadedLoginState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class ErrorLoginState extends AuthState {
+  final String message;
+
+  const ErrorLoginState(this.message);
+  @override
+  List<Object> get props => [message];
+}
+
+
+class LoadingGetUserInfoState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class LoadedGetUserInfoState extends AuthState {
+  final FullUserInfo userInfo;
+  const LoadedGetUserInfoState(this.userInfo);
+  @override
+  List<Object> get props => [userInfo];
+}
+
+class ErrorGetUserInfoState extends AuthState {
+  final String message;
+
+  const ErrorGetUserInfoState(this.message);
+  @override
+  List<Object> get props => [message];
+}
+

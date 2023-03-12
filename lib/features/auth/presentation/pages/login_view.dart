@@ -5,6 +5,7 @@ import 'package:health_care/core/compnents.dart';
 
 import '../../../../core/colors.dart';
 import '../../../../core/font.dart';
+import '../../../home/presentation/pages/home_view.dart';
 import '../bloc/auth_cubit.dart';
 import 'start_register_view.dart';
 
@@ -32,6 +33,15 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is ChangePasswordVisibilityState) {
               passwordVisible = state.visible;
+            }else if(state is LoadingLoginState){
+              isLoading=true;
+            }else if(state is LoadedLoginState){
+              isLoading=false;
+              showToast(msg: 'Welcome', state: ToastStates.success);
+              navigateToAndFinish(context,const HomeScreen());
+            }else if(state is ErrorLoginState){
+              isLoading=false;
+              showToast(msg:state.message, state: ToastStates.error);
             }
           },
           builder: (context, state) {
@@ -86,7 +96,15 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 25.h,),
-                defaultButton(onTap: (){}, text: 'Login',isLoading: isLoading),
+                defaultButton(onTap: (){
+                  if(!isLoading){
+                    if(emailController.text.isNotEmpty&&passwordController.text.isNotEmpty){
+                      authCubit.login(email: emailController.text, password: passwordController.text);
+                    }else{
+                      showToast(msg: 'Enter Full Info', state: ToastStates.error);
+                    }
+                  }
+                }, text: 'Login',isLoading: isLoading),
                 SizedBox(height: 8.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

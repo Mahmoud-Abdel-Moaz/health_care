@@ -5,7 +5,7 @@ import 'package:health_care/core/compnents.dart';
 
 import '../../../../core/colors.dart';
 import '../../../../core/font.dart';
-import '../../../home/presentation/pages/home_view.dart';
+import '../../../home/presentation/pages/layout_view.dart';
 import '../bloc/auth_cubit.dart';
 import 'start_register_view.dart';
 
@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
             }else if(state is LoadedLoginState){
               isLoading=false;
               showToast(msg: 'Welcome', state: ToastStates.success);
-              navigateToAndFinish(context,const HomeScreen());
+              navigateToAndFinish(context, LayoutScreen());
             }else if(state is ErrorLoginState){
               isLoading=false;
               showToast(msg:state.message, state: ToastStates.error);

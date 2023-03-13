@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 Color defaultColor=const Color(0xff335288);
 Color oldSilver=const Color(0xff858585);
 Color  metallicBlue=const Color(0xff395186);
+Color  ceil=const Color(0xff98a7c1);
+Color  brightGray=const Color(0xffefefef);
+Color  spanishGray=const Color(0xff979797);
+Color  startProfileHeaderColor=const Color(0xffe7ebef);
+Color  midProfileHeaderColor=const Color(0xff9caac7);
+Color  endProfileHeaderColor=const Color(0xff486494);
 
 
 /*Color raisinBlack=const Color(0xff252525);

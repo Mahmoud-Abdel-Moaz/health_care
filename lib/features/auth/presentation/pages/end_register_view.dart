@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/colors.dart';
 import '../../../../core/compnents.dart';
 import '../../../../core/font.dart';
-import '../../../home/presentation/pages/home_view.dart';
+import '../../../home/presentation/pages/layout_view.dart';
 import '../bloc/auth_cubit.dart';
 
 class EndRegisterScreen extends StatelessWidget {
@@ -97,7 +97,7 @@ class EndRegisterScreen extends StatelessWidget {
               } else if (state is LoadedCreateAccountState) {
                 isLoading = false;
                 showToast(msg: 'Welcome $name', state: ToastStates.success);
-                navigateToAndFinish(context, const HomeScreen());
+                navigateToAndFinish(context,  LayoutScreen());
               } else if (state is LoadingCreateAccountState) {
                 isLoading = true;
               }

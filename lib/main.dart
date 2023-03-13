@@ -2,12 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:health_care/features/home/presentation/pages/home_view.dart';
+import 'package:health_care/features/home/presentation/pages/layout_view.dart';
 
 import 'core/cache_helper.dart';
 import 'core/constants.dart';
 import 'features/auth/presentation/bloc/auth_cubit.dart';
 import 'features/auth/presentation/pages/login_view.dart';
+import 'features/home/presentation/bloc/layout_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return  MultiBlocProvider(
       providers: [
        BlocProvider(create: (_) =>  AuthCubit()),
+       BlocProvider(create: (_) =>  LayoutCubit()),
 
       ],
       child: ScreenUtilInit(
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
           builder: ( context,child) => MaterialApp(
             title: 'Health care',
             debugShowCheckedModeBanner: false,
-            home:userId!=null?const HomeScreen():const LoginScreen(),
+            home:userId!=null? LayoutScreen():const LoginScreen(),
           )
       ),
     );

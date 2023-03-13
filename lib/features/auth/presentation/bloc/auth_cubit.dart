@@ -138,7 +138,9 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
       );
       if (userCredential.user != null) {
+        print('userId ${userCredential.user!.uid}');
         CacheHelper.saveData(key: 'user_id', value: userCredential.user!.uid);
+        userId=userCredential.user!.uid;
         emit(LoadedLoginState());
       }else{
         emit(const ErrorLoginState('error'));
@@ -162,19 +164,31 @@ class AuthCubit extends Cubit<AuthState> {
   getUserInfo()async{
     try{
       emit(LoadingGetUserInfoState());
-      final documentSnapshot = await FirebaseFirestore.instance
+      print('user id $userId');
+
+      var collection = _firestore.collection('users');
+      var docSnapshot = await collection.doc('userId').get();
+      if (docSnapshot.exists) {
+        Map<String, dynamic>? data = docSnapshot.data();
+        userInfo =UserInfoModel.fromJson(data!);
+        emit(LoadedGetUserInfoState(userInfo!));
+      }else {
+        print('Document does not exist');
+      }
+
+     /* final documentSnapshot = await FirebaseFirestore.instance
           .collection('users')
           .doc(userId)
           .get();
       if (documentSnapshot.exists) {
         //final data = documentSnapshot.data()!;
-        Map<String, dynamic> data = documentSnapshot.data as Map<String, dynamic>;
-        userInfo =UserInfoModel.fromJson(data);
+        var data = documentSnapshot.data *//*as Map<String, dynamic>?*//*;
+        userInfo =UserInfoModel.fromJson((data as Map<String, dynamic>?)!);
         emit(LoadedGetUserInfoState(userInfo!));
         // Do something with the data
       } else {
         print('Document does not exist');
-      }
+      }*/
     }catch(e){
       if (kDebugMode) {
         print('error getUserInfo $e');

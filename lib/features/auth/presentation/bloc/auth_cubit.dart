@@ -64,6 +64,7 @@ class AuthCubit extends Cubit<AuthState> {
     required bloodType,
     required chronicDisease,
     required password,
+    required vaccineType,
   }) async {
     try {
       UserCredential user =
@@ -88,7 +89,7 @@ class AuthCubit extends Cubit<AuthState> {
             vaccineDate,
             vaccineDose,
             bloodType,
-            chronicDisease);
+            chronicDisease,vaccineType);
         saveUserInfo(userInfoModel);
       }
     } on FirebaseAuthException catch (e) {

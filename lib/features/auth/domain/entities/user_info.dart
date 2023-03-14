@@ -16,7 +16,7 @@ class FullUserInfo extends Equatable {
       vaccineDate,
       vaccineDose,
       bloodType,
-      chronicDisease;
+      chronicDisease,vaccineType;
 
   const FullUserInfo(
       this.id,
@@ -34,7 +34,7 @@ class FullUserInfo extends Equatable {
       this.vaccineDate,
       this.vaccineDose,
       this.bloodType,
-      this.chronicDisease);
+      this.chronicDisease,this.vaccineType);
 
   @override
   List<Object?> get props => [
@@ -53,6 +53,6 @@ class FullUserInfo extends Equatable {
         vaccineDate,
         vaccineDose,
         bloodType,
-        chronicDisease
+        chronicDisease,vaccineType
       ];
 }

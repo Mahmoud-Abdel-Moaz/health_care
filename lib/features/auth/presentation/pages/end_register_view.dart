@@ -438,6 +438,7 @@ class EndRegisterScreen extends StatelessWidget {
                             bloodType != null &&
                             chronicDiseaseController.text.isNotEmpty &&
                             passwordController.text.isNotEmpty &&
+                            vaccineTypeController.text.isNotEmpty &&
                             passwordVerifyController.text.isNotEmpty) {
                           if (passwordController.text ==
                               passwordVerifyController.text) {
@@ -458,6 +459,7 @@ class EndRegisterScreen extends StatelessWidget {
                               bloodType: bloodType,
                               chronicDisease: chronicDiseaseController.text,
                               password: passwordController.text,
+                              vaccineType: vaccineTypeController.text
                             );
                           } else {
                             showToast(

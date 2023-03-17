@@ -13,10 +13,10 @@ import 'service_view.dart';
 class LayoutScreen extends StatelessWidget {
   LayoutScreen({Key? key}) : super(key: key);
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+  static  final List<Widget> _widgetOptions = <Widget>[
+   const HomeScreen(),
     ServiceScreen(),
-    ProfileScreen(),
+   const ProfileScreen(),
   ];
 
   @override
@@ -61,4 +61,5 @@ class LayoutScreen extends StatelessWidget {
       },
     );
   }
+
 }

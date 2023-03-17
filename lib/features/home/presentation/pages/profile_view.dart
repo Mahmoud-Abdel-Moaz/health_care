@@ -110,7 +110,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.gender,
+                            userInfo?.gender??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -134,7 +134,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.bloodType,
+                            userInfo?.bloodType??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -158,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.phoneNumber,
+                            userInfo?.phoneNumber??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -182,7 +182,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.nationalId,
+                            userInfo?.nationalId??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -206,7 +206,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.address,
+                            userInfo?.address??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -230,7 +230,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.birthDate,
+                            userInfo?.birthDate??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -270,7 +270,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.infectionState,
+                            userInfo?.infectionState??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -294,7 +294,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.takingVaccine,
+                            userInfo?.takingVaccine??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -318,7 +318,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.vaccineType,
+                            userInfo?.vaccineType??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -342,7 +342,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.vaccineDose,
+                            userInfo?.vaccineDose??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -366,7 +366,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.vaccineDate,
+                            userInfo?.vaccineDate??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,
@@ -390,7 +390,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Text(
-                            userInfo!.chronicDisease,
+                            userInfo?.chronicDisease??'',
                             style: openSans(
                                 dataFontSize, dataColor, dataFontWeight),
                             textScaleFactor: 1,

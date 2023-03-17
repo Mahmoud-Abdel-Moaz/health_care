@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class FullUserInfo extends Equatable {
-  final String id,
+  final String? id,
       name,
       nationalId,
       gender,

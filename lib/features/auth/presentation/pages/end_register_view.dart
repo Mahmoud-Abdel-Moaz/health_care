@@ -84,7 +84,7 @@ class EndRegisterScreen extends StatelessWidget {
                 selectedDate = state.dateTime;
                 vaccineDate =
                     '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
-                vaccineDateController.text = birthDate!;
+                vaccineDateController.text = vaccineDate!;
               } else if (state is ChangeSelectedBloodTypeState) {
                 bloodType = state.bloodType;
               } else if (state is ChangeRegisterPasswordVisibilityState) {
@@ -431,47 +431,50 @@ class EndRegisterScreen extends StatelessWidget {
                   ),
                   defaultButton(
                       onTap: () {
-                        if (infectionStateController.text.isNotEmpty &&
-                            takingVaccineController.text.isNotEmpty &&
-                            vaccineDate != null &&
-                            vaccineDoseController.text.isNotEmpty &&
-                            bloodType != null &&
-                            chronicDiseaseController.text.isNotEmpty &&
-                            passwordController.text.isNotEmpty &&
-                            vaccineTypeController.text.isNotEmpty &&
-                            passwordVerifyController.text.isNotEmpty) {
-                          if (passwordController.text ==
-                              passwordVerifyController.text) {
-                            authCubit.createAccount(
-                              name: name,
-                              nationalId: nationalId,
-                              gender: gender,
-                              birthDate: birthDate,
-                              phoneNumber: phoneNumber,
-                              email: email,
-                              address: address,
-                              governorate: governorate,
-                              city: city,
-                              infectionState: infectionStateController.text,
-                              takingVaccine: takingVaccineController.text,
-                              vaccineDate: vaccineDate,
-                              vaccineDose: vaccineDoseController.text,
-                              bloodType: bloodType,
-                              chronicDisease: chronicDiseaseController.text,
-                              password: passwordController.text,
-                              vaccineType: vaccineTypeController.text
-                            );
+                        if(!isLoading){
+                          if (infectionStateController.text.isNotEmpty &&
+                              takingVaccineController.text.isNotEmpty &&
+                              vaccineDate != null &&
+                              vaccineDoseController.text.isNotEmpty &&
+                              bloodType != null &&
+                              chronicDiseaseController.text.isNotEmpty &&
+                              passwordController.text.isNotEmpty &&
+                              vaccineTypeController.text.isNotEmpty &&
+                              passwordVerifyController.text.isNotEmpty) {
+                            if (passwordController.text ==
+                                passwordVerifyController.text) {
+                              authCubit.createAccount(
+                                  name: name,
+                                  nationalId: nationalId,
+                                  gender: gender,
+                                  birthDate: birthDate,
+                                  phoneNumber: phoneNumber,
+                                  email: email,
+                                  address: address,
+                                  governorate: governorate,
+                                  city: city,
+                                  infectionState: infectionStateController.text,
+                                  takingVaccine: takingVaccineController.text,
+                                  vaccineDate: vaccineDate,
+                                  vaccineDose: vaccineDoseController.text,
+                                  bloodType: bloodType,
+                                  chronicDisease: chronicDiseaseController.text,
+                                  password: passwordController.text,
+                                  vaccineType: vaccineTypeController.text
+                              );
+                            } else {
+                              showToast(
+                                  msg: 'passwords are not the same',
+                                  state: ToastStates.error);
+                            }
                           } else {
                             showToast(
-                                msg: 'passwords are not the same',
-                                state: ToastStates.error);
+                                msg: 'Enter Full Info', state: ToastStates.error);
                           }
-                        } else {
-                          showToast(
-                              msg: 'Enter Full Info', state: ToastStates.error);
                         }
+
                       },
-                      text: 'Sign up')
+                      text: 'Sign up',isLoading: isLoading)
                 ],
               );
             },

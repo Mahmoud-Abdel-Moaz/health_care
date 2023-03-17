@@ -12,7 +12,7 @@ class UserInfoModel extends FullUserInfo{
     Map<String,dynamic> json={};
     json['id']=id;
     json['name']=name;
-    json['national_d']=nationalId;
+    json['national_id']=nationalId;
     json['gender']=gender;
     json['birth_date']=birthDate;
     json['phone_number']=phoneNumber;

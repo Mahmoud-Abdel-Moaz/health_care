@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -168,9 +170,10 @@ class AuthCubit extends Cubit<AuthState> {
       print('user id $userId');
 
       var collection = _firestore.collection('users');
-      var docSnapshot = await collection.doc('userId').get();
+      var docSnapshot = await collection.doc(userId).get();
       if (docSnapshot.exists) {
         Map<String, dynamic>? data = docSnapshot.data();
+        log('getUserInfo $data');
         userInfo =UserInfoModel.fromJson(data!);
         emit(LoadedGetUserInfoState(userInfo!));
       }else {

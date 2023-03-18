@@ -5,6 +5,7 @@ import 'package:health_care/core/constants.dart';
 import 'package:health_care/core/font.dart';
 import 'package:health_care/features/home/presentation/pages/app_service.dart';
 
+import '../../../../core/compnents.dart';
 import '../../../medicine/presentation/pages/medicine_view.dart';
 
 class ServiceScreen extends StatelessWidget {

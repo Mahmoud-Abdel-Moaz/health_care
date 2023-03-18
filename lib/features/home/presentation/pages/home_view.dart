@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:health_care/core/colors.dart';
 import 'package:health_care/core/constants.dart';
 import 'package:health_care/core/font.dart';
+import 'package:health_care/core/local_notification_service.dart';
 import 'package:health_care/features/auth/presentation/pages/login_view.dart';
 
 import '../../../../core/cache_helper.dart';
@@ -89,6 +90,9 @@ GestureDetector(
   onTap: (){
     try{
       FirebaseAuth.instance.signOut();
+      notificationId=1;
+      CacheHelper.saveData(key: 'notification_id', value: notificationId);
+      LocalNotificationService.cancelNotification();
 
     }catch(e){
 

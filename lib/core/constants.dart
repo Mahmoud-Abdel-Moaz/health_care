@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import 'colors.dart';
-import 'font.dart';
 
 const projectId='raya-68237';
 
@@ -13,6 +11,7 @@ const internetError='تأكد من الأتصال بالأنترنت';
 bool enableNotification=true;
 bool enableRate=true;
 String? userId;
+int notificationId=1;
 
 setDefaultStatusBar() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -35,29 +34,4 @@ String convertDate(DateTime dateTime){
   String formattedDate = formatter.format(dateTime);
   return formattedDate;
 }
-
-void navigateTo(context, widget,{void Function()? onBack }) => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => widget,
-      ),
-    ).then((value) {
-  onBack;
-});
-
-Future<void> navigateToAndFinish(context, widget) =>
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => widget,
-        ), (Route<dynamic> route) {
-      return false;
-    });
-
-void navigateToAndReplacement(context, widget) => Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => widget,
-      ),
-    );
 

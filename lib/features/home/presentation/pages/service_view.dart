@@ -1,43 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:health_care/core/colors.dart';
+import 'package:health_care/core/constants.dart';
 import 'package:health_care/core/font.dart';
 import 'package:health_care/features/home/presentation/pages/app_service.dart';
+
+import '../../../medicine/presentation/pages/medicine_view.dart';
 
 class ServiceScreen extends StatelessWidget {
   ServiceScreen({Key? key}) : super(key: key);
 
-  final services = [
-    AppService(
-      'assets/images/hospital.png',
-      'Hospital',
-      () {},
-    ),    AppService(
-      'assets/images/lab.png',
-      'Laboratory',
-      () {},
-    ),
-  AppService(
-      'assets/images/first_aid.png',
-      'First Aid',
-      () {},
-    ),
-  AppService(
-      'assets/images/pharmacy.png',
-      'Pharmacy',
-      () {},
-    ),
-  AppService(
-      'assets/images/emergency.png',
-      'Emergency',
-      () {},
-    ),
-  AppService(
-      'assets/images/medicine.png',
-      'Medicine Remindar',
-      () {},
-    ),
-  ];
 
   serviceItem(AppService appService)=>Flexible(fit:FlexFit.tight,child: GestureDetector(
     onTap: appService.onTap,
@@ -63,6 +35,38 @@ class ServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final services = [
+      AppService(
+        'assets/images/hospital.png',
+        'Hospital',
+            () {},
+      ),    AppService(
+        'assets/images/lab.png',
+        'Laboratory',
+            () {},
+      ),
+      AppService(
+        'assets/images/first_aid.png',
+        'First Aid',
+            () {},
+      ),
+      AppService(
+        'assets/images/pharmacy.png',
+        'Pharmacy',
+            () {},
+      ),
+      AppService(
+        'assets/images/emergency.png',
+        'Emergency',
+            () {},
+      ),
+      AppService(
+        'assets/images/medicine.png',
+        'Medicine Remindar',
+            ()=>navigateTo(context, const MedicineScreen()),
+      ),
+    ];
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.h,horizontal: 8.w),
       child: Center(

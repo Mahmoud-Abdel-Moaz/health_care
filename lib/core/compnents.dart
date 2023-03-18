@@ -76,11 +76,11 @@ AppBar defaultAppBar({
     title: Text(
       title,
       style: openSans(
-          titleSize ?? 20.sp, titleColor ?? defaultColor, FontWeight.bold),
+          titleSize ?? 20.sp, titleColor ?? Colors.white, FontWeight.bold),
       textScaleFactor: 1,
     ),
     centerTitle: centerTitle,
-    backgroundColor: background ?? const Color(0xff58595b),
+    backgroundColor: background ?? defaultColor,
     elevation: elevation,
     bottom: bottom,
     leading: withBack
@@ -91,7 +91,7 @@ AppBar defaultAppBar({
             },
         child: Icon(
           Icons.arrow_back_ios_rounded,
-          color: iconColor ?? defaultColor,
+          color: iconColor ?? Colors.white,
           size: 20.r,
         ))
         : null,
@@ -108,9 +108,9 @@ customTextField({
   required TextEditingController controller,
   required BuildContext context,
   required String hint,
-  required String label,
+   String? label,
   required FocusNode focusNode,
-  required IconData icon,
+   IconData? icon,
   bool obscureText = false,
   bool enable=true,
   double? height,
@@ -129,8 +129,10 @@ customTextField({
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if(label!=null)
           Text(label,style: openSans(14.sp, defaultColor, FontWeight.w600),textScaleFactor: 1,),
-          SizedBox(height: 8.h,),
+          if(label!=null)
+            SizedBox(height: 8.h,),
           Container(
             padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
             height: height,
@@ -143,8 +145,10 @@ customTextField({
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                if(icon!=null)
                 Icon(icon,color: oldSilver,size: 20.r,),
-                SizedBox(width: 8.w,),
+                if(icon!=null)
+                  SizedBox(width: 8.w,),
                 Expanded(
                   child: TextFormField(
                     style: openSans(14, Colors.black, FontWeight.w600),

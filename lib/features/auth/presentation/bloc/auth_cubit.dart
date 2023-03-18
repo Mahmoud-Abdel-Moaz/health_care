@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:health_care/core/local_notification_service.dart';
 
 import '../../../../core/cache_helper.dart';
 import '../../../../core/constants.dart';
@@ -121,6 +122,9 @@ class AuthCubit extends Cubit<AuthState> {
       userId = userInfoModel.id;
       userInfo=userInfoModel;
       CacheHelper.saveData(key: 'user_id', value: userId);
+      notificationId=1;
+      CacheHelper.saveData(key: 'notification_id', value: notificationId);
+      LocalNotificationService.cancelNotification();
       emit(LoadedCreateAccountState());
     } on FirebaseException catch (e) {
       emit(ErrorCreateAccountState(e.message ?? 'error'));
@@ -144,6 +148,9 @@ class AuthCubit extends Cubit<AuthState> {
         print('userId ${userCredential.user!.uid}');
         CacheHelper.saveData(key: 'user_id', value: userCredential.user!.uid);
         userId=userCredential.user!.uid;
+        notificationId=1;
+        CacheHelper.saveData(key: 'notification_id', value: notificationId);
+        LocalNotificationService.cancelNotification();
         emit(LoadedLoginState());
       }else{
         emit(const ErrorLoginState('error'));

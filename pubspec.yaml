@@ -51,6 +51,8 @@ dependencies:
   dio: ^4.0.6
   intl: ^0.17.0
   device_info_plus: ^8.1.0
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -83,6 +85,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/medicine/
+    - assets/json/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

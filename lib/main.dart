@@ -10,6 +10,7 @@ import 'core/local_notification_service.dart';
 import 'features/auth/presentation/bloc/auth_cubit.dart';
 import 'features/auth/presentation/pages/login_view.dart';
 import 'features/home/presentation/bloc/layout_cubit.dart';
+import 'features/hospitals/presentation/bloc/place_cubit.dart';
 import 'features/medicine/presentation/bloc/medicine_cubit.dart';
 
 void main() async{
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
 
     return  MultiBlocProvider(
       providers: [
+       BlocProvider(create: (_) =>  PlaceCubit()),
        BlocProvider(create: (_) =>  AuthCubit()),
        BlocProvider(create: (_) =>  LayoutCubit()),
        BlocProvider(create: (_) =>  MedicineCubit()),

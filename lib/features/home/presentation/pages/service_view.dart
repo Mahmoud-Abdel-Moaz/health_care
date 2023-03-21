@@ -4,6 +4,7 @@ import 'package:health_care/core/colors.dart';
 import 'package:health_care/core/constants.dart';
 import 'package:health_care/core/font.dart';
 import 'package:health_care/features/home/presentation/pages/app_service.dart';
+import 'package:health_care/features/hospitals/presentation/pages/places_view.dart';
 
 import '../../../../core/compnents.dart';
 import '../../../medicine/presentation/pages/medicine_view.dart';
@@ -40,7 +41,7 @@ class ServiceScreen extends StatelessWidget {
       AppService(
         'assets/images/hospital.png',
         'Hospital',
-            () {},
+            () =>navigateTo(context,const PlacesTypeScreen(type: 'hospital', title: 'Hospitals')),
       ),    AppService(
         'assets/images/lab.png',
         'Laboratory',

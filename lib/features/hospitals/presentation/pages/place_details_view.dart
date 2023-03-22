@@ -28,7 +28,7 @@ class PlaceDetails extends StatelessWidget {
             child: ImageIcon(
               AssetImage('assets/images/$type.png'),
               color: defaultColor,
-              size: 70.r,
+              size: 120.r,
             ),
           ),
           SizedBox(

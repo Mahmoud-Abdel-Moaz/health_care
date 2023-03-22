@@ -8,6 +8,7 @@ Color  ceil=const Color(0xff98a7c1);
 Color  brightGray=const Color(0xffefefef);
 Color  spanishGray=const Color(0xff979797);
 Color  lotion=const Color(0xfffafafa);
+Color  green=const Color(0xff67a67e);
 Color  wildBlueYonder=const Color(0xffabb6cf);
 
 Color  startProfileHeaderColor=const Color(0xffe7ebef);

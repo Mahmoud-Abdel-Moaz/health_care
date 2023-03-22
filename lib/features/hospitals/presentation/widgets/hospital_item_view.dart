@@ -35,9 +35,17 @@ class HospitalItemView extends StatelessWidget {
         children: [
           Text(place.name,style: openSans(16.sp, Colors.black, FontWeight.w600),textScaleFactor: 1,),
           SizedBox(height: 8.h,),
-          Text(place.availability,style: openSans(14.sp, Colors.greenAccent, FontWeight.w400),textScaleFactor: 1,),
+          Text(place.availability,style: openSans(14.sp, green, FontWeight.w400),textScaleFactor: 1,),
           SizedBox(height: 8.h,),
-defaultButton(onTap: ()=>navigateTo(context, PlaceDetails(place: place, type: type)), text: 'Get Details'),
+Row(
+  mainAxisSize: MainAxisSize.max,
+  children: [
+    const Flexible(fit:FlexFit.tight,child: SizedBox()),
+        defaultButton(onTap: ()=>navigateTo(context, PlaceDetails(place: place, type: type)), text: 'Get Details'),
+    const Flexible(fit:FlexFit.tight,child: SizedBox()),
+
+  ],
+),
         ],
       ),
     );

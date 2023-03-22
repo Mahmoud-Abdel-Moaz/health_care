@@ -58,14 +58,20 @@ class PlacesTypeScreen extends StatelessWidget {
                           offset: const Offset(0, 3))
                     ],
                   ),
-                  child: Center(
-                    child: defaultButton(
-                      onTap: () => navigateTo(
-                          context,
-                          LocationsScreen(
-                              places: places!, type: type, title: title)),
-                      text: 'Get Locations',
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                     const Flexible(fit:FlexFit.tight,child: SizedBox()),
+                      defaultButton(
+                        onTap: () => navigateTo(
+                            context,
+                            LocationsScreen(
+                                places: places!, type: type, title: title)),
+                        text: 'Get Locations',
+                      ),
+                     const Flexible(fit:FlexFit.tight,child: SizedBox()),
+
+                    ],
                   ),
                 ),
                 SizedBox(

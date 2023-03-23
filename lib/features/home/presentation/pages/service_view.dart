@@ -45,7 +45,7 @@ class ServiceScreen extends StatelessWidget {
       ),    AppService(
         'assets/images/lab.png',
         'Laboratory',
-            () {},
+            () =>navigateTo(context,const PlacesTypeScreen(type: 'lab', title: 'Laboratory')),
       ),
       AppService(
         'assets/images/first_aid.png',
@@ -55,7 +55,7 @@ class ServiceScreen extends StatelessWidget {
       AppService(
         'assets/images/pharmacy.png',
         'Pharmacy',
-            () {},
+            () =>navigateTo(context,const PlacesTypeScreen(type: 'pharmacy', title: 'Pharmacy')),
       ),
       AppService(
         'assets/images/emergency.png',

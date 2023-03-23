@@ -33,6 +33,9 @@ class _LocationsScreenState extends State<LocationsScreen> {
           target: LatLng(currentLocation!.latitude, currentLocation!.longitude),
           zoom: 20,
         );
+        googleMapController!.animateCamera(
+          CameraUpdate.newCameraPosition(initialCameraPosition!),
+        );
 
         markers = [];
         for (Place place in widget.places) {
@@ -91,7 +94,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
       body: GoogleMap(
         mapType: MapType.normal,
         myLocationButtonEnabled: true,
-        zoomControlsEnabled: true,
+        zoomControlsEnabled: false,
         initialCameraPosition: initialCameraPosition!,
         onMapCreated: (controller) => googleMapController = controller,
         markers: markers.toSet(),

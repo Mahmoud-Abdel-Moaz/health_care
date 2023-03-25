@@ -71,7 +71,6 @@ class MedicineScreen extends StatelessWidget {
     final timeController = TextEditingController();
     final nameFocusNode = FocusNode();
     final doesFocusNode = FocusNode();
-    final timeFocusNode = FocusNode();
     bool isLoading = false;
     TimeOfDay? selectedTime;
     String? selectedShape;
@@ -259,6 +258,7 @@ class MedicineScreen extends StatelessWidget {
                         if(!isLoading){
                           if(nameController.text.isNotEmpty&&doesController.text.isNotEmpty&&selectedShape!=null&&selectedTime!=null){
                             medicineCubit.addMedicine(name: nameController.text, shape: selectedShape!, dose: doesController.text, hour: selectedTime!.hour, minute: selectedTime!.minute);
+                         Navigator.of(mainContext).pop();
                           }else {
                             showToast(msg: 'Enter All Info', state: ToastStates.error);
                           }

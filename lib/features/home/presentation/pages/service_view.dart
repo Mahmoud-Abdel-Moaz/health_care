@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:health_care/core/colors.dart';
-import 'package:health_care/core/constants.dart';
 import 'package:health_care/core/font.dart';
 import 'package:health_care/features/home/presentation/pages/app_service.dart';
 import 'package:health_care/features/hospitals/presentation/pages/places_view.dart';
 
 import '../../../../core/compnents.dart';
+import '../../../emergency/presentation/pages/emergency_view.dart';
 import '../../../medicine/presentation/pages/medicine_view.dart';
 
 class ServiceScreen extends StatelessWidget {
@@ -60,7 +60,7 @@ class ServiceScreen extends StatelessWidget {
       AppService(
         'assets/images/emergency.png',
         'Emergency',
-            () {},
+            () =>navigateTo(context, EmergencyScreen()),
       ),
       AppService(
         'assets/images/medicine.png',

@@ -273,6 +273,7 @@ passwordTextField({
 Widget defaultButton(
     {required void Function() onTap,
       required String text,
+      Color? background,
       bool isLoading = false}) {
   return GestureDetector(
     onTap: onTap,
@@ -283,7 +284,7 @@ Widget defaultButton(
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
-        color: defaultColor,
+        color: background??defaultColor,
       ),
       child: Center(
         child: isLoading

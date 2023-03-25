@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:health_care/features/emergency/presentation/bloc/emergency_cubit.dart';
 import 'package:health_care/features/home/presentation/pages/layout_view.dart';
 
 import 'core/cache_helper.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
 
     return  MultiBlocProvider(
       providers: [
+       BlocProvider(create: (_) =>EmergencyCubit()),
        BlocProvider(create: (_) =>  PlaceCubit()),
        BlocProvider(create: (_) =>  AuthCubit()),
        BlocProvider(create: (_) =>  LayoutCubit()),

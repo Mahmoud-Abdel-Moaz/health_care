@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:health_care/features/emergency/presentation/bloc/emergency_cubit.dart';
+import 'package:health_care/features/first_aid/presentation/bloc/first_aid_cubit.dart';
 import 'package:health_care/features/home/presentation/pages/layout_view.dart';
 
 import 'core/cache_helper.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
        BlocProvider(create: (_) =>  AuthCubit()),
        BlocProvider(create: (_) =>  LayoutCubit()),
        BlocProvider(create: (_) =>  MedicineCubit()),
+       BlocProvider(create: (_) =>  FirstAidCubit()),
 
       ],
       child: ScreenUtilInit(

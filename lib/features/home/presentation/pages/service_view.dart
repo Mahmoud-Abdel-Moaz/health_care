@@ -7,6 +7,7 @@ import 'package:health_care/features/hospitals/presentation/pages/places_view.da
 
 import '../../../../core/compnents.dart';
 import '../../../emergency/presentation/pages/emergency_view.dart';
+import '../../../first_aid/presentation/pages/first_aid_view.dart';
 import '../../../medicine/presentation/pages/medicine_view.dart';
 
 class ServiceScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class ServiceScreen extends StatelessWidget {
       AppService(
         'assets/images/first_aid.png',
         'First Aid',
-            () {},
+            () =>navigateTo(context, FirstAidScreen()),
       ),
       AppService(
         'assets/images/pharmacy.png',

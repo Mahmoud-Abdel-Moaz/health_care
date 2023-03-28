@@ -2,12 +2,15 @@
 import 'package:flutter/material.dart';
 
 //Color defaultColor=const Color(0xff335288);
-Color defaultColor=paleRobinEggBlue;
+Color defaultColor=eminence;
 Color paleRobinEggBlue=const Color(0xff93d8d5);
 Color middleBlueGreen=const Color(0xff8cd3d7);
 Color middleBlue=const Color(0xff75ccd3);
+Color eminence=const Color(0xff673f88);
+Color violet=const Color(0xff9c318a);
 Color oldSilver=const Color(0xff858585);
 Color  metallicBlue=const Color(0xff395186);
+Color  secondColor=violet;
 Color  ceil=const Color(0xff98a7c1);
 Color  brightGray=const Color(0xffefefef);
 Color  spanishGray=const Color(0xff979797);
@@ -16,8 +19,12 @@ Color  green=const Color(0xff67a67e);
 Color  wildBlueYonder=const Color(0xffabb6cf);
 
 Color  startProfileHeaderColor=const Color(0xffe7ebef);
+Color  midProfileHeaderColor=violet;
+Color  endProfileHeaderColor=eminence;
+
+/*Color  startProfileHeaderColor=const Color(0xffe7ebef);
 Color  midProfileHeaderColor=const Color(0xff9caac7);
-Color  endProfileHeaderColor=const Color(0xff486494);
+Color  endProfileHeaderColor=const Color(0xff486494);*/
 
 
 /*Color raisinBlack=const Color(0xff252525);

@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text("Don't have an account ? ",style: openSans(14.sp, Colors.black, FontWeight.w400),textScaleFactor: 1,),
                     SizedBox(width: 4.w,),
-                    GestureDetector(onTap:()=>navigateTo(context,const StartRegisterScreen()),child: Text("Register Now",style: openSans(14.sp, metallicBlue, FontWeight.w400),textScaleFactor: 1,)),
+                    GestureDetector(onTap:()=>navigateTo(context,const StartRegisterScreen()),child: Text("Register Now",style: openSans(14.sp, secondColor, FontWeight.w400),textScaleFactor: 1,)),
                   ],
                 ),
                 SizedBox(height: 30.h,),

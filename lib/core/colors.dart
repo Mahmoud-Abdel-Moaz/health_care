@@ -1,7 +1,11 @@
 
 import 'package:flutter/material.dart';
 
-Color defaultColor=const Color(0xff335288);
+//Color defaultColor=const Color(0xff335288);
+Color defaultColor=paleRobinEggBlue;
+Color paleRobinEggBlue=const Color(0xff93d8d5);
+Color middleBlueGreen=const Color(0xff8cd3d7);
+Color middleBlue=const Color(0xff75ccd3);
 Color oldSilver=const Color(0xff858585);
 Color  metallicBlue=const Color(0xff395186);
 Color  ceil=const Color(0xff98a7c1);

@@ -1,4 +1,4 @@
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +27,7 @@ class MedicineScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is LoadedMedicinesState) {
             medicines = state.medicines;
-          }else if(state is LoadedAddMedicineState){
+          } else if (state is LoadedAddMedicineState) {
             medicineCubit.getMedicines();
           }
         },
@@ -43,10 +43,9 @@ class MedicineScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                  mainAxisSpacing:16,
-                  crossAxisSpacing:16,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
               ),
-
               itemCount: medicines!.length,
               itemBuilder: (BuildContext context, int index) =>
                   MedicineItemView(medicine: medicines![index]),
@@ -75,7 +74,7 @@ class MedicineScreen extends StatelessWidget {
     TimeOfDay? selectedTime;
     String? selectedShape;
     MedicineCubit medicineCubit = MedicineCubit.get(mainContext);
-    
+
     showMaterialModalBottomSheet(
       context: mainContext,
       shape: RoundedRectangleBorder(
@@ -103,23 +102,24 @@ class MedicineScreen extends StatelessWidget {
               ),*/
               child: BlocConsumer<MedicineCubit, MedicineState>(
                 listener: (context, state) {
-                  if(state is ChangeSelectedTimeState){
-                    selectedTime=state.timeOfDay;
-                    timeController.text='${selectedTime!.hour}:${selectedTime!.minute}';
-                  }else if(state is ChangeSelectedShapeState){
-                    selectedShape=state.shape;
-                  }else if(state is LoadedAddMedicineState){
-                    isLoading=false;
+                  if (state is ChangeSelectedTimeState) {
+                    selectedTime = state.timeOfDay;
+                    timeController.text =
+                        '${selectedTime!.hour}:${selectedTime!.minute}';
+                  } else if (state is ChangeSelectedShapeState) {
+                    selectedShape = state.shape;
+                  } else if (state is LoadedAddMedicineState) {
+                    isLoading = false;
                     nameController.clear();
                     doesController.clear();
                     timeController.clear();
-                    selectedTime=null;
-                    selectedShape=null;
+                    selectedTime = null;
+                    selectedShape = null;
                     medicineCubit.getMedicines();
-                  }else if(state is LoadingAddMedicineState){
-                    isLoading=true;
-                  }else if(state is ErrorAddMedicineState){
-                    isLoading=false;
+                  } else if (state is LoadingAddMedicineState) {
+                    isLoading = true;
+                  } else if (state is ErrorAddMedicineState) {
+                    isLoading = false;
                     showToast(msg: state.message, state: ToastStates.error);
                   }
                 },
@@ -166,34 +166,33 @@ class MedicineScreen extends StatelessWidget {
                         context: context,
                         hint: 'Does',
                         label: 'Does',
-                        type:const TextInputType.numberWithOptions(decimal: false,signed: false),
+                        type: const TextInputType.numberWithOptions(
+                            decimal: false, signed: false),
                         focusNode: doesFocusNode,
-                        onSubmit: () =>
-                            FocusScope.of(context).unfocus(),
+                        onSubmit: () => FocusScope.of(context).unfocus(),
                       ),
                       SizedBox(
                         height: 16.h,
                       ),
                       GestureDetector(
-                        onTap: ()async{
+                        onTap: () async {
                           final TimeOfDay? newTime = await showTimePicker(
                             context: context,
                             initialTime: const TimeOfDay(hour: 7, minute: 15),
                           );
-                          if(newTime!=null){
-                              medicineCubit.changeSelectedTime(newTime);
+                          if (newTime != null) {
+                            medicineCubit.changeSelectedTime(newTime);
                           }
                         },
                         child: Container(
                           color: Colors.transparent,
                           child: Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Time',
-                                style: openSans(14.sp, defaultColor,
-                                    FontWeight.w600),
+                                style: openSans(
+                                    14.sp, defaultColor, FontWeight.w600),
                                 textScaleFactor: 1,
                               ),
                               SizedBox(
@@ -206,12 +205,13 @@ class MedicineScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
                                   border: Border.all(
-                                      width: 1.r,
-                                      color: defaultColor),
-                                  borderRadius:
-                                  BorderRadius.circular(12.r),
+                                      width: 1.r, color: defaultColor),
+                                  borderRadius: BorderRadius.circular(12.r),
                                 ),
-                                child: Text(selectedTime!=null?timeController.text:'Time',
+                                child: Text(
+                                  selectedTime != null
+                                      ? timeController.text
+                                      : 'Time',
                                   style: openSans(
                                       14,
                                       selectedTime != null
@@ -226,7 +226,6 @@ class MedicineScreen extends StatelessWidget {
                           ),
                         )
 
-
                         /*customTextField(
                           controller: timeController,
                           context: context,
@@ -236,7 +235,8 @@ class MedicineScreen extends StatelessWidget {
                           focusNode: timeFocusNode,
                           onSubmit: () =>
                               FocusScope.of(context).unfocus(),
-                        )*/,
+                        )*/
+                        ,
                       ),
                       SizedBox(
                         height: 16.h,
@@ -244,26 +244,39 @@ class MedicineScreen extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          shapeItem('bandage',  selectedShape, medicineCubit),
-                          shapeItem('capsule',  selectedShape, medicineCubit),
-                          shapeItem('inhaler',  selectedShape, medicineCubit),
-                          shapeItem('injection',  selectedShape, medicineCubit),
-                          shapeItem('tablet',  selectedShape, medicineCubit),
+                          shapeItem('bandage', selectedShape, medicineCubit),
+                          shapeItem('capsule', selectedShape, medicineCubit),
+                          shapeItem('inhaler', selectedShape, medicineCubit),
+                          shapeItem('injection', selectedShape, medicineCubit),
+                          shapeItem('tablet', selectedShape, medicineCubit),
                         ],
                       ),
                       SizedBox(
                         height: 16.h,
                       ),
-                      defaultButton(onTap: (){
-                        if(!isLoading){
-                          if(nameController.text.isNotEmpty&&doesController.text.isNotEmpty&&selectedShape!=null&&selectedTime!=null){
-                            medicineCubit.addMedicine(name: nameController.text, shape: selectedShape!, dose: doesController.text, hour: selectedTime!.hour, minute: selectedTime!.minute);
-                         Navigator.of(mainContext).pop();
-                          }else {
-                            showToast(msg: 'Enter All Info', state: ToastStates.error);
-                          }
-                        }
-                      }, text: 'ADD MEDICINE',isLoading: isLoading),
+                      defaultButton(
+                          onTap: () {
+                            if (!isLoading) {
+                              if (nameController.text.isNotEmpty &&
+                                  doesController.text.isNotEmpty &&
+                                  selectedShape != null &&
+                                  selectedTime != null) {
+                                medicineCubit.addMedicine(
+                                    name: nameController.text,
+                                    shape: selectedShape!,
+                                    dose: doesController.text,
+                                    hour: selectedTime!.hour,
+                                    minute: selectedTime!.minute);
+                                Navigator.of(mainContext).pop();
+                              } else {
+                                showToast(
+                                    msg: 'Enter All Info',
+                                    state: ToastStates.error);
+                              }
+                            }
+                          },
+                          text: 'ADD MEDICINE',
+                          isLoading: isLoading),
                     ],
                   );
                 },
@@ -274,21 +287,25 @@ class MedicineScreen extends StatelessWidget {
       ),
     );
   }
-  
-  shapeItem(String shape,String? selectedShape,MedicineCubit medicineCubit){
-    return Flexible(child: GestureDetector(
-      onTap: ()=>medicineCubit.changeSelectedShape(shape),
-      child: Container(
-        height: 40.h,
-        padding: EdgeInsets.symmetric(vertical: 4.h,horizontal: 4.w),
-        decoration: BoxDecoration(
-          color: selectedShape==shape?wildBlueYonder:Colors.transparent,
-          shape: BoxShape.circle,
-        ),
-child:ImageIcon(AssetImage('assets/images/medicine/${shape}.png'),color: defaultColor,size: 60.r,),
 
+  shapeItem(String shape, String? selectedShape, MedicineCubit medicineCubit) {
+    return Flexible(
+      child: GestureDetector(
+        onTap: () => medicineCubit.changeSelectedShape(shape),
+        child: Container(
+          height: 40.h,
+          padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 4.w),
+          decoration: BoxDecoration(
+            color: selectedShape == shape ? wildBlueYonder : Colors.transparent,
+            shape: BoxShape.circle,
+          ),
+          child: ImageIcon(
+            AssetImage('assets/images/medicine/${shape}.png'),
+            color: defaultColor,
+            size: 60.r,
+          ),
+        ),
       ),
-    ),);
+    );
   }
 }
-

@@ -12,35 +12,37 @@ import 'package:timezone/timezone.dart' as tz;
 
 import 'compnents.dart';
 
-
-
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
-  _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+      _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   static _requestPermissions() {
     _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-        IOSFlutterLocalNotificationsPlugin>()
+            IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+          alert: true,
+          badge: true,
+          sound: true,
+        );
     _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-        MacOSFlutterLocalNotificationsPlugin>()
+            MacOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+    _flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestPermission();
   }
 
   static void initialize(BuildContext context) {
     _requestPermissions();
     const AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings(
+        AndroidInitializationSettings(
       "@mipmap/ic_launcher",
     );
     void onDidReceiveLocalNotification(
@@ -66,12 +68,12 @@ class LocalNotificationService {
     }
 
     final DarwinInitializationSettings initializationSettingsDarwin =
-    DarwinInitializationSettings(
-        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+        DarwinInitializationSettings(
+            onDidReceiveLocalNotification: onDidReceiveLocalNotification);
     final InitializationSettings initializationSettings =
-    InitializationSettings(
-        android: initializationSettingsAndroid,
-        iOS: initializationSettingsDarwin);
+        InitializationSettings(
+            android: initializationSettingsAndroid,
+            iOS: initializationSettingsDarwin);
     _flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse:
@@ -79,14 +81,15 @@ class LocalNotificationService {
     );
   }
 
-
   static setNotification(
       {required DateTime time,
-        required int id,
-        required String body,
-        required String title ,
-        DateTimeComponents? matchDateTimeComponents}) async {
-    Int64List vibrationPattern =  Int64List(4);
+      required int id,
+      required String body,
+      required String title,
+      DateTimeComponents? matchDateTimeComponents}) async {
+    print(' setNotification $time $id $title $body ');
+
+    Int64List vibrationPattern = Int64List(4);
     vibrationPattern[0] = 0;
     vibrationPattern[1] = 1000;
     vibrationPattern[2] = 5000;
@@ -100,14 +103,14 @@ class LocalNotificationService {
         title,
         body,
         time,
-         NotificationDetails(
+        NotificationDetails(
             android: AndroidNotificationDetails(
                 'channel id 10', 'Medicine Time',
                 channelDescription: 'Medicine Time',
                 playSound: true,
                 vibrationPattern: vibrationPattern,
                 fullScreenIntent: true),
-            iOS:const DarwinNotificationDetails(
+            iOS: const DarwinNotificationDetails(
               presentSound: true,
             )),
         androidAllowWhileIdle: true,
@@ -116,25 +119,30 @@ class LocalNotificationService {
     } else {
       tz.initializeTimeZones();
 
-      await _flutterLocalNotificationsPlugin.zonedSchedule(
-          id,
-          title,
-          body,
-          tz.TZDateTime.now(tz.local).add(time.difference(DateTime.now())),
-          NotificationDetails(
-              android: AndroidNotificationDetails( 'channel id 10', 'Medicine Time',
-                  channelDescription: 'Medicine Time',
-                  playSound: true,
-                  vibrationPattern: vibrationPattern,
-                  fullScreenIntent: true),
-              iOS:const DarwinNotificationDetails(
-                presentSound: true,
-              )),
-          androidAllowWhileIdle: true,
-          payload: body,
-          matchDateTimeComponents: DateTimeComponents.time,
-          uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime);
+      await _flutterLocalNotificationsPlugin
+          .zonedSchedule(
+              id,
+              title,
+              body,
+              tz.TZDateTime.now(tz.local).add(time.difference(DateTime.now())),
+              NotificationDetails(
+                  android: AndroidNotificationDetails(
+                      'channel id 10', 'Medicine Time',
+                      channelDescription: 'Medicine Time',
+                      playSound: true,
+                      vibrationPattern: vibrationPattern,
+                      fullScreenIntent: true),
+                  iOS: const DarwinNotificationDetails(
+                    presentSound: true,
+                  )),
+              androidAllowWhileIdle: true,
+              payload: body,
+              matchDateTimeComponents: DateTimeComponents.time,
+              uiLocalNotificationDateInterpretation:
+                  UILocalNotificationDateInterpretation.absoluteTime)
+          .catchError((e) {
+        print('error setNotification $e ');
+      });
     }
   }
 

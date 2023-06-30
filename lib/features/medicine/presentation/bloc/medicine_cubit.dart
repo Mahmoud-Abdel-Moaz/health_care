@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +21,11 @@ class MedicineCubit extends Cubit<MedicineState> {
   Future<void> getMedicines() async {
     try {
       emit(LoadingMedicinesState());
-      QuerySnapshot querySnapshot =
-          await _firestore.collection('medicines').doc(userId).collection('medicines').get();
+      QuerySnapshot querySnapshot = await _firestore
+          .collection('medicines')
+          .doc(userId)
+          .collection('medicines')
+          .get();
       medicines = [];
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> map = doc.data()! as Map<String, dynamic>;
@@ -45,16 +47,22 @@ class MedicineCubit extends Cubit<MedicineState> {
   }) async {
     try {
       emit(LoadingAddMedicineState());
-      final CollectionReference myCollection =
-          _firestore.collection('medicines').doc(userId).collection('medicines');
+      final CollectionReference myCollection = _firestore
+          .collection('medicines')
+          .doc(userId)
+          .collection('medicines');
       final DocumentReference newDocRef = myCollection.doc();
       final String newDocId = newDocRef.id;
-      await _firestore.collection('medicines').doc(userId).collection('medicines').doc(newDocId).set(
-          MedicineModel(newDocId, name, shape, dose, hour, minute, userId!,
+      await _firestore
+          .collection('medicines')
+          .doc(userId)
+          .collection('medicines')
+          .doc(newDocId)
+          .set(MedicineModel(newDocId, name, shape, dose, hour, minute, userId!,
                   notificationId)
               .toJson());
       _addNotification(notificationId, name, dose, hour, minute);
-      notificationId = 2;
+      notificationId = notificationId + 1;
       CacheHelper.saveData(key: 'notification_id', value: notificationId);
       emit(LoadedAddMedicineState());
     } catch (e) {

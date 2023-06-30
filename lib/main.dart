@@ -15,12 +15,12 @@ import 'features/home/presentation/bloc/layout_cubit.dart';
 import 'features/hospitals/presentation/bloc/place_cubit.dart';
 import 'features/medicine/presentation/bloc/medicine_cubit.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   await Firebase.initializeApp();
-  userId=CacheHelper.getData(key: 'user_id');
-  notificationId=CacheHelper.getData(key: 'notification_id')??1;
+  userId = CacheHelper.getData(key: 'user_id');
+  notificationId = CacheHelper.getData(key: 'notification_id') ?? 1;
   runApp(const MyApp());
 }
 
@@ -32,25 +32,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocalNotificationService.initialize(context);
 
-    return  MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
-       BlocProvider(create: (_) =>EmergencyCubit()),
-       BlocProvider(create: (_) =>  PlaceCubit()),
-       BlocProvider(create: (_) =>  AuthCubit()),
-       BlocProvider(create: (_) =>  LayoutCubit()),
-       BlocProvider(create: (_) =>  MedicineCubit()),
-       BlocProvider(create: (_) =>  FirstAidCubit()),
-
+        BlocProvider(create: (_) => EmergencyCubit()),
+        BlocProvider(create: (_) => PlaceCubit()),
+        BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => LayoutCubit()),
+        BlocProvider(create: (_) => MedicineCubit()),
+        BlocProvider(create: (_) => FirstAidCubit()),
       ],
       child: ScreenUtilInit(
-          designSize:const  Size(375, 812),
+          designSize: const Size(375, 812),
           minTextAdapt: true,
-          builder: ( context,child) => MaterialApp(
-            title: 'Health care',
-            debugShowCheckedModeBanner: false,
-            home:userId!=null? LayoutScreen():const LoginScreen(),
-          )
-      ),
+          builder: (context, child) => MaterialApp(
+                title: 'Health care',
+                debugShowCheckedModeBanner: false,
+                home: userId != null ? LayoutScreen() : const LoginScreen(),
+              )),
     );
   }
 }

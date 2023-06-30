@@ -33,15 +33,15 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is ChangePasswordVisibilityState) {
               passwordVisible = state.visible;
-            }else if(state is LoadingLoginState){
-              isLoading=true;
-            }else if(state is LoadedLoginState){
-              isLoading=false;
+            } else if (state is LoadingLoginState) {
+              isLoading = true;
+            } else if (state is LoadedLoginState) {
+              isLoading = false;
               showToast(msg: 'Welcome', state: ToastStates.success);
               navigateToAndFinish(context, LayoutScreen());
-            }else if(state is ErrorLoginState){
-              isLoading=false;
-              showToast(msg:state.message, state: ToastStates.error);
+            } else if (state is ErrorLoginState) {
+              isLoading = false;
+              showToast(msg: state.message, state: ToastStates.error);
             }
           },
           builder: (context, state) {
@@ -65,8 +65,9 @@ class LoginScreen extends StatelessWidget {
                           style: openSans(20.sp, Colors.black, FontWeight.bold),
                           textScaleFactor: 1,
                         ),
-                        SizedBox(height: 150.h,),
-
+                        SizedBox(
+                          height: 150.h,
+                        ),
                         customTextField(
                           controller: emailController,
                           context: context,
@@ -75,7 +76,8 @@ class LoginScreen extends StatelessWidget {
                           type: TextInputType.emailAddress,
                           focusNode: emailFocusNode,
                           icon: Icons.email,
-                          onSubmit:()=> FocusScope.of(context).requestFocus(passwordFocusNode),
+                          onSubmit: () => FocusScope.of(context)
+                              .requestFocus(passwordFocusNode),
                         ),
                         SizedBox(
                           height: 16.h,
@@ -87,35 +89,64 @@ class LoginScreen extends StatelessWidget {
                           label: 'Password',
                           focusNode: passwordFocusNode,
                           obscureText: passwordVisible,
-                          onSubmit: ()=>FocusScope.of(context).unfocus(),
-                          onTap: ()=>authCubit.changePasswordVisibility(!passwordVisible),
+                          onSubmit: () => FocusScope.of(context).unfocus(),
+                          onTap: () => authCubit
+                              .changePasswordVisibility(!passwordVisible),
                         ),
-                        SizedBox(height: 25.h,),
+                        SizedBox(
+                          height: 25.h,
+                        ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 25.h,),
-                defaultButton(onTap: (){
-                  if(!isLoading){
-                    if(emailController.text.isNotEmpty&&passwordController.text.isNotEmpty){
-                      authCubit.login(email: emailController.text, password: passwordController.text);
-                    }else{
-                      showToast(msg: 'Enter Full Info', state: ToastStates.error);
-                    }
-                  }
-                }, text: 'Login',isLoading: isLoading),
-                SizedBox(height: 8.h,),
+                SizedBox(
+                  height: 25.h,
+                ),
+                defaultButton(
+                    onTap: () {
+                      if (!isLoading) {
+                        if (emailController.text.isNotEmpty &&
+                            passwordController.text.isNotEmpty) {
+                          authCubit.login(
+                              email: emailController.text,
+                              password: passwordController.text);
+                        } else {
+                          showToast(
+                              msg: 'Enter Full Info', state: ToastStates.error);
+                        }
+                      }
+                    },
+                    text: 'Login',
+                    isLoading: isLoading),
+                SizedBox(
+                  height: 8.h,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("Don't have an account ? ",style: openSans(14.sp, Colors.black, FontWeight.w400),textScaleFactor: 1,),
-                    SizedBox(width: 4.w,),
-                    GestureDetector(onTap:()=>navigateTo(context,const StartRegisterScreen()),child: Text("Register Now",style: openSans(14.sp, secondColor, FontWeight.w400),textScaleFactor: 1,)),
+                    Text(
+                      "Don't have an account ? ",
+                      style: openSans(14.sp, Colors.black, FontWeight.w400),
+                      textScaleFactor: 1,
+                    ),
+                    SizedBox(
+                      width: 4.w,
+                    ),
+                    GestureDetector(
+                        onTap: () =>
+                            navigateTo(context, const StartRegisterScreen()),
+                        child: Text(
+                          "Register Now",
+                          style: openSans(14.sp, secondColor, FontWeight.w400),
+                          textScaleFactor: 1,
+                        )),
                   ],
                 ),
-                SizedBox(height: 30.h,),
+                SizedBox(
+                  height: 30.h,
+                ),
               ],
             );
           },

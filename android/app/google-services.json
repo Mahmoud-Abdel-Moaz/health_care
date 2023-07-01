@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "798081580030",
-    "project_id": "health-care-4c36d",
-    "storage_bucket": "health-care-4c36d.appspot.com"
+    "project_number": "185102767534",
+    "project_id": "health-care-71b04",
+    "storage_bucket": "health-care-71b04.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:798081580030:android:4f1a9c21ffe5f068c51eaf",
+        "mobilesdk_app_id": "1:185102767534:android:b3464371e902ac7166243f",
         "android_client_info": {
           "package_name": "com.app.health_care"
         }
       },
       "oauth_client": [
         {
-          "client_id": "798081580030-t4ratgph7n4fv8oqoo2lq1jpjt3s5lj6.apps.googleusercontent.com",
+          "client_id": "185102767534-42e39km9g73hohrctkqcgt64q1oorrq7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA-fUXdsx0jSHNQK7phyAH7WMxc_Q3tPOk"
+          "current_key": "AIzaSyAA_jA4bLBicuvBZEkdqgx5GJdYHviRLuM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "798081580030-t4ratgph7n4fv8oqoo2lq1jpjt3s5lj6.apps.googleusercontent.com",
+              "client_id": "185102767534-42e39km9g73hohrctkqcgt64q1oorrq7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
